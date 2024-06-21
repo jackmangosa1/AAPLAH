@@ -22,3 +22,12 @@
 .filled-text {
   color: #5b8c51;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #5b8c51 !important;
+}
+
+.swiper-pagination-bullet {
+  width: 0.7rem !important;
+  height: 0.7rem !important;
+}
