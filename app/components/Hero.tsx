@@ -50,46 +50,48 @@ const Hero = () => {
     },
   ];
   return (
-    <div>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 6000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={false}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-        onSlideChange={() => setKey((prev) => prev + 1)}
-      >
-        {heroData.map((item) => (
-          <SwiperSlide key={item.id}>
-            <Image
-              src={item.image}
-              objectFit="cover"
-              objectPosition="right"
-              alt={`hero-image${item.id}`}
-              className="w-full h-[46rem]"
-            />
-            <div className="bg-black opacity-30 absolute inset-0"></div>
-            <div
-              key={key}
-              className="absolute top-48 left-6 flex flex-col gap-10 w-[50rem] text-white animate-slideIn"
-            >
-              <h2 className="text-7xl font-bold">{item.bigText}</h2>
-              <p>{item.description}</p>
+    <div className="z-0">
+      <section id="acceuil">
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={false}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+          onSlideChange={() => setKey((prev) => prev + 1)}
+        >
+          {heroData.map((item) => (
+            <SwiperSlide key={item.id}>
+              <Image
+                src={item.image}
+                objectFit="cover"
+                objectPosition="right"
+                alt={`hero-image${item.id}`}
+                className="w-full h-[46rem]"
+              />
+              <div className="bg-black opacity-30 absolute inset-0"></div>
+              <div
+                key={key}
+                className="absolute top-48 left-6 flex flex-col gap-10 w-[50rem] text-white animate-slideIn"
+              >
+                <h2 className="text-7xl font-bold">{item.bigText}</h2>
+                <p>{item.description}</p>
 
-              <button className="bg-green text-white px-8 py-3 rounded-lg w-fit font-bold animate-slideUp">
-                {item.callToAction}
-              </button>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+                <button className="bg-green text-white px-8 py-3 rounded-lg w-fit font-bold animate-slideUp">
+                  {item.callToAction}
+                </button>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
     </div>
   );
 };

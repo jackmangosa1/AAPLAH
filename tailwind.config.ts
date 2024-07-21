@@ -36,7 +36,7 @@ const config: Config = {
         },
         slideIn: {
           "0%": {
-            transform: "translateX(-100%)",
+            transform: "translateX(100%)",
             opacity: "0",
           },
           "100%": {

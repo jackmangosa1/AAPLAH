@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .text-stroke {
   -webkit-text-stroke: 1px #5b8c51;
   color: transparent;
@@ -30,4 +34,8 @@
 .swiper-pagination-bullet {
   width: 0.7rem !important;
   height: 0.7rem !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
 }
