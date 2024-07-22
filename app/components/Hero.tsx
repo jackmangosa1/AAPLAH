@@ -30,7 +30,6 @@ const Hero = () => {
         "Nous établissons des étangs piscicoles pour fournir une source durable de protéines et renforcer l'économie locale. Rejoignez-nous dans cette initiative vitale.",
       callToAction: "En savoir plus",
     },
-
     {
       id: 3,
       image: HeroImage4,
@@ -39,7 +38,6 @@ const Hero = () => {
         "AAPELAH aide les ménages vulnérables à diversifier leurs sources de revenus en développant l'aviculture. Nous fournissons des poulaillers, des géniteurs de qualité, et des formations pour une production durable.",
       callToAction: "En savoir plus",
     },
-
     {
       id: 4,
       image: HeroImage3,
@@ -49,6 +47,7 @@ const Hero = () => {
       callToAction: "En savoir plus",
     },
   ];
+
   return (
     <div className="z-0">
       <section id="acceuil">
@@ -69,24 +68,30 @@ const Hero = () => {
         >
           {heroData.map((item) => (
             <SwiperSlide key={item.id}>
-              <Image
-                src={item.image}
-                objectFit="cover"
-                objectPosition="right"
-                alt={`hero-image${item.id}`}
-                className="w-full h-[46rem]"
-              />
-              <div className="bg-black opacity-30 absolute inset-0"></div>
-              <div
-                key={key}
-                className="absolute top-48 left-6 flex flex-col gap-10 w-[50rem] text-white animate-slideIn"
-              >
-                <h2 className="text-7xl font-bold">{item.bigText}</h2>
-                <p>{item.description}</p>
-
-                <button className="bg-green text-white px-8 py-3 rounded-lg w-fit font-bold animate-slideUp">
-                  {item.callToAction}
-                </button>
+              <div className="relative w-full h-[30rem] sm:h-[40rem] md:h-[46rem]">
+                <Image
+                  src={item.image}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                  alt={`hero-image${item.id}`}
+                  priority
+                />
+                <div className="bg-black opacity-30 absolute inset-0"></div>
+                <div
+                  key={key}
+                  className="absolute top-1/4 left-4 sm:left-6 flex flex-col gap-4 sm:gap-6 md:gap-10 w-[90%] sm:w-[80%] md:w-[60%] lg:w-[50rem] text-white animate-slideIn p-4 sm:p-0"
+                >
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
+                    {item.bigText}
+                  </h2>
+                  <p className="text-sm sm:text-base md:text-lg">
+                    {item.description}
+                  </p>
+                  <button className="bg-green text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg w-fit font-bold animate-slideUp text-sm sm:text-base">
+                    {item.callToAction}
+                  </button>
+                </div>
               </div>
             </SwiperSlide>
           ))}
