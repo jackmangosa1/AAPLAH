@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import { HiMenu, HiX } from "react-icons/hi";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import Link from "next/link";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,9 +17,20 @@ const Header = () => {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -50,27 +62,29 @@ const Header = () => {
           </button>
         )}
       </div>
-      <nav
-        className={`${
-          isMobile ? (menuOpen ? "flex" : "hidden") : "flex"
-        } flex-col md:flex-row items-center w-full md:w-auto mt-4 md:mt-0`}
-      >
-        <ul className="flex flex-col md:flex-row gap-6 md:gap-10 mb-4 md:mb-0">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} className="hover:text-green-500">
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link href="/#contacts" className="hover:text-green-500">
-          <button className="flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-3 rounded-lg">
-            <FiPhoneCall />
-            Contactez-nous
-          </button>
-        </Link>
-      </nav>
+      <div ref={menuRef}>
+        <nav
+          className={`${
+            isMobile ? (menuOpen ? "flex" : "hidden") : "flex"
+          } flex-col md:flex-row items-center w-full md:w-auto mt-4 md:mt-0`}
+        >
+          <ul className="flex flex-col md:flex-row gap-6 md:gap-10 mb-4 md:mb-0">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-green-500">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link href="/#contacts" className="hover:text-green-500">
+            <button className="flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-3 rounded-lg">
+              <FiPhoneCall />
+              Contactez-nous
+            </button>
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };

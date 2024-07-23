@@ -8,18 +8,50 @@ import { PiStarFour } from "react-icons/pi";
 
 const Partners = () => {
   return (
-    <div className="py-20 px-6 flex flex-col gap-10 ">
-      <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-grayText rounded-2xl">
-        <PiStarFour className="text-lg rotate-12" />
+    <div className="py-10 sm:py-20 px-4 sm:px-6 flex flex-col gap-6 sm:gap-10">
+      <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-grayText rounded-2xl text-sm sm:text-base">
+        <PiStarFour className="text-base sm:text-lg rotate-12" />
         Nos Partenaires
       </div>
-      <div className="text-6xl text-darkText font-bold">Nos Partenaires</div>
-      <div className="flex justify-between">
-        <Image src={WFP} alt="partner-1" height={100} width={200} />
-        <Image src={DRC} alt="partner-1" height={100} width={200} />
-        <Image src={UN} alt="partner-1" height={100} width={200} />
-        <Image src={MC} alt="partner-1" height={100} width={200} />
-        <Image src={DRC} alt="partner-1" height={100} width={200} />
+      <div className="text-4xl sm:text-5xl md:text-6xl text-darkText font-bold">
+        Nos Partenaires
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 justify-items-center">
+        <Image
+          src={WFP}
+          alt="partner-1"
+          height={80}
+          width={160}
+          className="w-auto h-auto"
+        />
+        <Image
+          src={DRC}
+          alt="partner-2"
+          height={80}
+          width={160}
+          className="w-auto h-auto"
+        />
+        <Image
+          src={UN}
+          alt="partner-3"
+          height={80}
+          width={160}
+          className="w-auto h-auto"
+        />
+        <Image
+          src={MC}
+          alt="partner-4"
+          height={80}
+          width={160}
+          className="w-auto h-auto"
+        />
+        <Image
+          src={DRC}
+          alt="partner-5"
+          height={80}
+          width={160}
+          className="w-auto h-auto"
+        />
       </div>
     </div>
   );
