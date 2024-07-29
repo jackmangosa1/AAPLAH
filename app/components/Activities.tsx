@@ -48,40 +48,48 @@ const activitiesData = [
 
 const Activities = () => {
   return (
-    <div className="gap-10 px-6 py-20 bg-green">
-      <section id="activités" className="flex flex-col gap-10">
-        <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-grayText rounded-2xl">
+    <div className="flex justify-center px-6 py-20 bg-green">
+      <section
+        id="activités"
+        className="flex flex-col gap-10 max-w-screen-lg mx-auto"
+      >
+        <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-grayText rounded-2xl mx-auto">
           <PiStarFour className="text-lg rotate-12" />
           Nos activités
         </div>
-        <div className="text-6xl text-white font-bold">
+        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold text-center">
           Les solutions durables
         </div>
 
-        <div className="flex gap-10 flex-wrap">
-          {activitiesData.map((activity, index) => (
+        <div className="flex flex-wrap justify-center gap-10">
+          {activitiesData.map((activity) => (
             <div
-              key={index}
-              className="relative group flex flex-col gap-5 bg-white p-5 rounded-2xl w-[25rem] hover:cursor-pointer"
+              key={activity.id}
+              className="relative group flex flex-col gap-5 bg-white p-5 rounded-2xl w-full sm:w-[25rem] lg:w-[20rem] xl:w-[22rem] hover:cursor-pointer"
             >
               <div className="overflow-hidden rounded-2xl">
                 <Image
                   src={activity.image}
-                  alt="activity-image"
+                  alt={activity.title}
+                  layout="responsive"
                   width={500}
                   height={500}
+                  quality={75}
+                  priority={activity.id === 1}
                   className="rounded-2xl w-full transition-transform duration-200 ease-in-out transform group-hover:scale-110"
                 />
               </div>
 
-              <p className="text-2xl text-darkText font-semibold">
+              <p className="text-xl sm:text-2xl text-darkText font-semibold">
                 {activity.title}
               </p>
               <hr className="border-grayLine" />
-              <p className="text-grayText">{activity.description}</p>
+              <p className="text-sm sm:text-base text-grayText">
+                {activity.description}
+              </p>
               <div className="mt-5">
-                <div className="bg-yellow absolute bottom-2 right-2 p-4 rounded-full  ">
-                  <HiArrowUpRight className="  text-green text-xl" />
+                <div className="bg-yellow absolute bottom-2 right-2 p-4 rounded-full">
+                  <HiArrowUpRight className="text-green text-xl" />
                 </div>
               </div>
             </div>

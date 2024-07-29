@@ -22,35 +22,35 @@ const Partners = () => {
           alt="partner-1"
           height={80}
           width={160}
-          className="w-auto h-auto"
+          className="w-auto h-12 sm:h-16 md:h-20"
         />
         <Image
           src={DRC}
           alt="partner-2"
           height={80}
           width={160}
-          className="w-auto h-auto"
+          className="w-auto h-12 sm:h-16 md:h-20"
         />
         <Image
           src={UN}
           alt="partner-3"
           height={80}
           width={160}
-          className="w-auto h-auto"
+          className="w-auto h-12 sm:h-16 md:h-20"
         />
         <Image
           src={MC}
           alt="partner-4"
           height={80}
           width={160}
-          className="w-auto h-auto"
+          className="w-auto h-12 sm:h-16 md:h-20"
         />
         <Image
           src={DRC}
           alt="partner-5"
           height={80}
           width={160}
-          className="w-auto h-auto"
+          className="w-auto h-12 sm:h-16 md:h-20"
         />
       </div>
     </div>

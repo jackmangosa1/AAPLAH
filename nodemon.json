@@ -1,5 +1,5 @@
 {
   "watch": ["pages", "components", "styles", "lib"],
-  "ext": "js,jsx,ts,tsx,css",
+  "ext": "tsx, js,jsx,ts,css",
   "exec": "next dev"
 }

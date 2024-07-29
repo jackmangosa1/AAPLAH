@@ -4,7 +4,7 @@ import Image from "next/image";
 import Image1 from "../assets/food-insecurity.jpg";
 import Image2 from "../assets/harvesting.jpg";
 
-const About = () => {
+const About = React.memo(() => {
   return (
     <div className="flex flex-col gap-10 p-6 md:p-20">
       <section id="Apropos" className="flex flex-col gap-16">
@@ -13,10 +13,11 @@ const About = () => {
             src={Image1}
             alt="image-1"
             className="w-full md:w-1/2 h-80 object-cover rounded-3xl"
+            placeholder="blur"
           />
           <div className="flex flex-col gap-5 justify-center md:w-1/2">
             <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-gray-600 rounded-2xl">
-              <PiStarFour className="text-lg rotate-12" />À propos
+              <PiStarFour className="text-lg rotate-12" /> À propos
             </div>
             <div className="text-3xl md:text-6xl text-darkText font-bold">
               Contexte
@@ -39,10 +40,11 @@ const About = () => {
             src={Image2}
             alt="image-2"
             className="w-full md:w-1/2 h-80 object-cover rounded-3xl"
+            placeholder="blur"
           />
           <div className="flex flex-col gap-5 justify-center md:w-1/2">
             <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-gray-600 rounded-2xl">
-              <PiStarFour className="text-lg rotate-12" />À propos
+              <PiStarFour className="text-lg rotate-12" /> À propos
             </div>
             <div className="text-3xl md:text-6xl text-darkText font-bold">
               Mission
@@ -62,6 +64,6 @@ const About = () => {
       </section>
     </div>
   );
-};
+});
 
 export default About;

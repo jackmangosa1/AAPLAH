@@ -28,14 +28,17 @@ const Figures = () => {
               <span className="text-green font-bold text-3xl sm:text-4xl md:text-5xl">
                 *
               </span>
-              <CountUp end={item.end} className="text-darkText font-bold" />
+              <CountUp
+                end={item.end}
+                className="text-darkText font-bold text-3xl sm:text-4xl md:text-5xl"
+              />
               <span className="-mt-1 -ml-1 text-2xl sm:text-3xl md:text-4xl text-darkText font-bold">
                 +
               </span>
             </div>
             <div className="flex flex-col gap-2">
               <hr className="border-darkBorder" />
-              <span className="text-grayText text-base sm:text-lg">
+              <span className="text-grayText text-base sm:text-lg md:text-xl">
                 {item.label}
               </span>
             </div>

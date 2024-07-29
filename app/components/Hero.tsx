@@ -71,11 +71,15 @@ const Hero = () => {
               <div className="relative w-full h-[30rem] sm:h-[40rem] md:h-[46rem]">
                 <Image
                   src={item.image}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
                   alt={`hero-image${item.id}`}
-                  priority
+                  priority={item.id === 1}
+                  loading={item.id === 1 ? "eager" : "lazy"}
+                  quality={80}
                 />
                 <div className="bg-black opacity-30 absolute inset-0"></div>
                 <div
