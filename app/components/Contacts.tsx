@@ -16,6 +16,10 @@ const Contacts = () => {
               className="rounded-2xl w-full h-auto object-cover object-center"
               width={600}
               height={400}
+              quality={75}
+              loading="lazy"
+              sizes="(max-width: 600px) 100vw, 600px"
+              placeholder="blur"
             />
           </div>
           <div className="w-full lg:w-1/2 flex flex-col gap-5">

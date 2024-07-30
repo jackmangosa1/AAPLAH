@@ -1,12 +1,12 @@
 import React from "react";
 import { PiStarFour } from "react-icons/pi";
 import Image from "next/image";
+import { HiArrowUpRight } from "react-icons/hi2";
 import seedImage from "../assets/seeds.jpg";
 import piscicultureImage from "../assets/pisciculture.jpg";
 import marketGardeningImage from "../assets/marketGardening.jpg";
 import avicultureImage from "../assets/aviculture.jpg";
 import trainingImage from "../assets/training.jpg";
-import { HiArrowUpRight } from "react-icons/hi2";
 
 const activitiesData = [
   {
@@ -33,9 +33,9 @@ const activitiesData = [
   {
     id: 4,
     image: avicultureImage,
-    title: "Aviculture ",
+    title: "Aviculture",
     description:
-      "Nous soutenons les familles vulnérables en développant l'aviculture, en fournissant des géniteurs de qualité et des formations sur la gestion des poulaillers. ",
+      "Nous soutenons les familles vulnérables en développant l'aviculture, en fournissant des géniteurs de qualité et des formations sur la gestion des poulaillers.",
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const Activities = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-10">
-          {activitiesData.map((activity) => (
+          {activitiesData.map((activity, index) => (
             <div
               key={activity.id}
               className="relative group flex flex-col gap-5 bg-white p-5 rounded-2xl w-full sm:w-[25rem] lg:w-[20rem] xl:w-[22rem] hover:cursor-pointer"
@@ -75,8 +75,11 @@ const Activities = () => {
                   width={500}
                   height={500}
                   quality={75}
-                  priority={activity.id === 1}
+                  priority={index === 0}
+                  loading={index !== 0 ? "lazy" : undefined}
                   className="rounded-2xl w-full transition-transform duration-200 ease-in-out transform group-hover:scale-110"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  placeholder="blur"
                 />
               </div>
 

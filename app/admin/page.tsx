@@ -10,6 +10,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import useAuth from "../lib/hooks/useAuth";
 import { getStorage } from "firebase/storage";
 import { Timestamp } from "firebase/firestore";
+import { htmlToText } from "../utils/htmlToText";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -38,10 +39,13 @@ const Admin = () => {
         imageUrl = await getDownloadURL(imageRef);
       }
 
+      // Strip HTML tags from content
+      const plainTextContent = htmlToText(content);
+
       const postData = {
         title,
         category,
-        content,
+        content: plainTextContent, // Save plain text content
         imageUrl,
         authorId: user.uid,
         createdAt: Timestamp.now(),
@@ -50,6 +54,7 @@ const Admin = () => {
       const docRef = await addDoc(collection(db, "posts"), postData);
       console.log("Post created with ID: ", docRef.id);
 
+      // Clear form
       setTitle("");
       setCategory("");
       setContent("");
@@ -72,7 +77,7 @@ const Admin = () => {
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
-        className=" flex flex-col gap-10 mt-20 px-6 py-10"
+        className="flex flex-col gap-10 mt-20 px-6 py-10"
       >
         <div className="flex flex-col gap-1">
           <label className="text-darkText font-bold">Title</label>
@@ -101,11 +106,11 @@ const Admin = () => {
             id="file-input"
             onChange={handleImageChange}
             required
-            className="hidden border-2 border-grayLine py-2 px-5 rounded-md w-full focus:outline-none"
+            className="hidden"
           />
           <button
             type="button"
-            className="flex items-center gap-2 border-2 border-grayLine py-2 px-5 rounded-md w-full focus:outline-none text-darkText"
+            className="flex items-center gap-2 border-2 border-grayLine py-2 px-5 rounded-md w-full text-darkText"
             onClick={() => document.getElementById("file-input")?.click()}
           >
             <FaImage />
@@ -113,11 +118,12 @@ const Admin = () => {
           </button>
           {imageName && <span>{imageName}</span>}
         </div>
-        <div className="flex flex-col gap-1">
-          <label className="text-darkText font-bold">Content</label>
-          <ReactQuill value={content} onChange={setContent} />
+        <div className="flex flex-col gap-10 mt-20 px-6 py-10">
+          <div className="flex flex-col gap-1">
+            <label className="text-darkText font-bold">Content</label>
+            <ReactQuill value={content} onChange={setContent} />
+          </div>
         </div>
-
         <button
           className="flex items-center justify-center gap-2 bg-green text-white font-bold px-10 py-4 rounded-lg w-fit"
           type="submit"

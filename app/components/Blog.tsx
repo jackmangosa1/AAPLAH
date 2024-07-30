@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -11,7 +11,6 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
-import { SwiperRef } from "swiper/react";
 import { Post } from "../types/types";
 import { db, storage } from "../lib/firebase/clientApp";
 import { collection, getDocs } from "firebase/firestore";
@@ -62,7 +61,7 @@ export default function Blog() {
           <div className="flex gap-4">
             <button
               className="custom-swiper-button-prev p-2 sm:p-3 border border-black h-fit rounded-md"
-              onClick={() => swiperRef.current?.swiper.slidePrev()}
+              onClick={() => swiperRef.current?.swiper.slideNext()}
             >
               <FaChevronLeft className="text-green text-sm sm:text-base" />
             </button>
@@ -93,7 +92,10 @@ export default function Blog() {
           }}
         >
           {posts.map((post) => (
-            <SwiperSlide key={post.id} onClick={() => router.push("/posts/")}>
+            <SwiperSlide
+              key={post.id}
+              onClick={() => router.push(`/posts/${post.id}`)}
+            >
               <div className="hover:cursor-pointer flex flex-col gap-3 sm:gap-4 md:gap-5 mb-8 sm:mb-0">
                 <div className="relative">
                   <div className="z-10 absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-white px-2 sm:px-3 py-1 w-fit text-grayText rounded-2xl text-xs sm:text-sm">
@@ -107,6 +109,11 @@ export default function Blog() {
                         className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-200 ease-in-out transform group-hover:scale-110"
                         width={300}
                         height={200}
+                        priority={false}
+                        quality={75}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        placeholder="blur"
+                        blurDataURL={post.imageUrl} // If you have a low-res version for placeholder
                       />
                     )}
                   </div>
