@@ -20,13 +20,14 @@ export default function Blog() {
   const router = useRouter();
   const swiperRef = useRef<SwiperRef>(null);
   const [posts, setPosts] = useState<Post[]>([]);
-
+  console.log(posts);
   useEffect(() => {
     const fetchPosts = async () => {
       const querySnapshot = await getDocs(collection(db, "posts"));
       const postsData: Post[] = [];
       for (const doc of querySnapshot.docs) {
         const data = doc.data() as Post;
+
         try {
           const imageRef = ref(storage, data.imagePath);
           const imageUrl = await getDownloadURL(imageRef);
@@ -41,6 +42,7 @@ export default function Blog() {
         }
       }
       setPosts(postsData);
+      console.log(postsData.forEach((post) => console.log(post.id)));
     };
 
     fetchPosts();
@@ -92,10 +94,7 @@ export default function Blog() {
           }}
         >
           {posts.map((post) => (
-            <SwiperSlide
-              key={post.id}
-              onClick={() => router.push(`/posts/${post.id}`)}
-            >
+            <SwiperSlide key={post.id}>
               <div className="hover:cursor-pointer flex flex-col gap-3 sm:gap-4 md:gap-5 mb-8 sm:mb-0">
                 <div className="relative">
                   <div className="z-10 absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-white px-2 sm:px-3 py-1 w-fit text-grayText rounded-2xl text-xs sm:text-sm">
@@ -113,7 +112,8 @@ export default function Blog() {
                         quality={75}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         placeholder="blur"
-                        blurDataURL={post.imageUrl} // If you have a low-res version for placeholder
+                        blurDataURL={post.imageUrl}
+                        onClick={() => router.push(`/posts/${post.id}`)}
                       />
                     )}
                   </div>

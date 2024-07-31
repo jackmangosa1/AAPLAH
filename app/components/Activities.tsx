@@ -48,51 +48,49 @@ const activitiesData = [
 
 const Activities = () => {
   return (
-    <div className="flex justify-center px-6 py-20 bg-green">
+    <div className="bg-green py-16 sm:py-20 lg:py-24">
       <section
         id="activités"
-        className="flex flex-col gap-10 max-w-screen-lg mx-auto"
+        className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-grayText rounded-2xl mx-auto">
-          <PiStarFour className="text-lg rotate-12" />
-          Nos activités
-        </div>
-        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold text-center">
-          Les solutions durables
+        <div className="flex flex-col items-center mb-12">
+          <div className="flex items-center gap-2 bg-white px-4 py-2 text-grayText rounded-full text-sm mb-6">
+            <PiStarFour className="text-lg rotate-12" />
+            Nos activités
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold text-center mb-12">
+            Les solutions durables
+          </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {activitiesData.map((activity, index) => (
             <div
               key={activity.id}
-              className="relative group flex flex-col gap-5 bg-white p-5 rounded-2xl w-full sm:w-[25rem] lg:w-[20rem] xl:w-[22rem] hover:cursor-pointer"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg"
             >
-              <div className="overflow-hidden rounded-2xl">
+              <div className="relative h-48 sm:h-56 lg:h-64">
                 <Image
                   src={activity.image}
                   alt={activity.title}
-                  layout="responsive"
-                  width={500}
-                  height={500}
+                  layout="fill"
+                  objectFit="cover"
                   quality={75}
                   priority={index === 0}
                   loading={index !== 0 ? "lazy" : undefined}
-                  className="rounded-2xl w-full transition-transform duration-200 ease-in-out transform group-hover:scale-110"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  placeholder="blur"
                 />
               </div>
-
-              <p className="text-xl sm:text-2xl text-darkText font-semibold">
-                {activity.title}
-              </p>
-              <hr className="border-grayLine" />
-              <p className="text-sm sm:text-base text-grayText">
-                {activity.description}
-              </p>
-              <div className="mt-5">
-                <div className="bg-yellow absolute bottom-2 right-2 p-4 rounded-full">
-                  <HiArrowUpRight className="text-green text-xl" />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-darkText mb-4">
+                  {activity.title}
+                </h3>
+                <p className="text-sm text-grayText mb-6">
+                  {activity.description}
+                </p>
+                <div className="flex justify-end">
+                  <div className="bg-yellow p-3 rounded-full">
+                    <HiArrowUpRight className="text-green text-xl" />
+                  </div>
                 </div>
               </div>
             </div>
