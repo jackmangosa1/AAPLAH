@@ -38,11 +38,12 @@ export default function Blog() {
           });
         } catch (error) {
           console.error("Error getting image URL:", error);
+          data.id = doc.id;
+
           postsData.push(data);
         }
       }
       setPosts(postsData);
-      console.log(postsData.forEach((post) => console.log(post.id)));
     };
 
     fetchPosts();
