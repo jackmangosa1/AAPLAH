@@ -6,6 +6,6 @@ export type Post = {
   category: string;
   content: string;
   imagePath: string;
-  imageUrl?: string;
+  imageUrl: string;
   createdAt: Timestamp;
 };

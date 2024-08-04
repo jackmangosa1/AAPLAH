@@ -6,7 +6,7 @@ type MarqueeProps = {
 
 const Marquee = ({ textes }: MarqueeProps) => {
   return (
-    <div className=" mb-2 p-2 overflow-hidden whitespace-nowrap">
+    <div className=" mb-24 p-2 overflow-hidden whitespace-nowrap">
       <div className="inline-block animate-marquee">
         {textes.map((text, index) => (
           <React.Fragment key={index}>

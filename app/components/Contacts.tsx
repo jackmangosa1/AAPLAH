@@ -1,11 +1,15 @@
 "use client";
-
 import React, { useState, useRef, ChangeEvent, FormEvent } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
+import { toast, Toaster } from "react-hot-toast";
 import FormImage from "../assets/woman.jpeg";
 import { PiStarFour } from "react-icons/pi";
 import { SiMinutemailer } from "react-icons/si";
+
+const serviceID = "";
+const templateID = "";
+const userPublicID = "";
 
 interface FormData {
   name: string;
@@ -23,45 +27,6 @@ interface FormErrors {
   message?: string;
 }
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  message: string;
-  isError?: boolean;
-}
-
-const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  onClose,
-  title,
-  message,
-  isError = false,
-}) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed p-2 inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-8 rounded-lg max-w-sm w-full">
-        <h2
-          className={`text-2xl font-bold mb-4 ${
-            isError ? "text-red-600" : "text-green-600"
-          }`}
-        >
-          {title}
-        </h2>
-        <p className="text-gray-700 mb-6">{message}</p>
-        <button
-          onClick={onClose}
-          className="bg-green text-white px-4 py-2 rounded hover:bg-green-100 transition-colors"
-        >
-          Fermer
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const Contacts: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -72,12 +37,6 @@ const Contacts: React.FC = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [loading, setLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({
-    title: "",
-    message: "",
-    isError: false,
-  });
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (
@@ -131,12 +90,7 @@ const Contacts: React.FC = () => {
         )
         .then(
           () => {
-            setModalContent({
-              title: "Succès!",
-              message: "Votre message a été envoyé avec succès.",
-              isError: false,
-            });
-            setModalOpen(true);
+            toast.success("Votre message a été envoyé avec succès.");
             setFormData({
               name: "",
               phone: "",
@@ -147,12 +101,7 @@ const Contacts: React.FC = () => {
             setLoading(false);
           },
           (error) => {
-            setModalContent({
-              title: "Erreur",
-              message: "Échec de l'envoi du message. Veuillez réessayer.",
-              isError: true,
-            });
-            setModalOpen(true);
+            toast.error("Échec de l'envoi du message. Veuillez réessayer.");
             setLoading(false);
           }
         );
@@ -161,7 +110,8 @@ const Contacts: React.FC = () => {
 
   return (
     <section id="contacts" className="bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <Toaster />
+      <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 py-10 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <div className="w-full lg:w-1/2">
             <Image
@@ -286,13 +236,6 @@ const Contacts: React.FC = () => {
           </div>
         </div>
       </div>
-      <Modal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        title={modalContent.title}
-        message={modalContent.message}
-        isError={modalContent.isError}
-      />
     </section>
   );
 };

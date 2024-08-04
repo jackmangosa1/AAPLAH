@@ -48,56 +48,54 @@ const activitiesData = [
 
 const Activities = () => {
   return (
-    <div className="bg-green py-16 sm:py-20 lg:py-24">
-      <section
-        id="activités"
-        className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
-      >
-        <div className="flex flex-col items-center mb-12">
-          <div className="flex items-center gap-2 bg-white px-4 py-2 text-grayText rounded-full text-sm mb-6">
-            <PiStarFour className="text-lg rotate-12" />
-            Nos activités
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold text-center mb-12">
-            Les solutions durables
-          </h2>
+    <section
+      id="activités"
+      className=" bg-green flex flex-col gap-16 px-6  py-10 sm:py-16 md:py-20"
+    >
+      <div className="flex flex-col gap-6 items-start">
+        <div className="flex items-center gap-2 bg-white px-4 py-2 text-grayText rounded-full text-sm">
+          <PiStarFour className="text-lg rotate-12" />
+          Nos activités
         </div>
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold text-center">
+          Les solutions durables
+        </h2>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {activitiesData.map((activity, index) => (
-            <div
-              key={activity.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg"
-            >
-              <div className="relative h-48 sm:h-56 lg:h-64">
-                <Image
-                  src={activity.image}
-                  alt={activity.title}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={75}
-                  priority={index === 0}
-                  loading={index !== 0 ? "lazy" : undefined}
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-darkText mb-4">
-                  {activity.title}
-                </h3>
-                <p className="text-sm text-grayText mb-6">
-                  {activity.description}
-                </p>
-                <div className="flex justify-end">
-                  <div className="bg-yellow p-3 rounded-full">
-                    <HiArrowUpRight className="text-green text-xl" />
-                  </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {activitiesData.map((activity, index) => (
+          <div
+            key={activity.id}
+            className="bg-white rounded-2xl overflow-hidden shadow-lg"
+          >
+            <div className="relative h-48 sm:h-56 lg:h-64">
+              <Image
+                src={activity.image}
+                alt={activity.title}
+                layout="fill"
+                objectFit="cover"
+                quality={75}
+                priority={index === 0}
+                loading={index !== 0 ? "lazy" : undefined}
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-darkText mb-4">
+                {activity.title}
+              </h3>
+              <p className="text-sm text-grayText mb-6">
+                {activity.description}
+              </p>
+              <div className="flex justify-end">
+                <div className="bg-yellow p-3 rounded-full">
+                  <HiArrowUpRight className="text-green text-xl" />
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

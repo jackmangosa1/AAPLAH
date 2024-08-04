@@ -15,18 +15,21 @@ import { Post } from "../types/types";
 import { db, storage } from "../lib/firebase/clientApp";
 import { collection, getDocs } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Blog() {
   const router = useRouter();
   const swiperRef = useRef<SwiperRef>(null);
   const [posts, setPosts] = useState<Post[]>([]);
-  console.log(posts);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const querySnapshot = await getDocs(collection(db, "posts"));
       const postsData: Post[] = [];
       for (const doc of querySnapshot.docs) {
-        const data = doc.data() as Post;
+        const data = doc.data() as Omit<Post, "id">;
 
         try {
           const imageRef = ref(storage, data.imagePath);
@@ -38,15 +41,45 @@ export default function Blog() {
           });
         } catch (error) {
           console.error("Error getting image URL:", error);
-          postsData.push(data);
+          postsData.push({
+            ...data,
+            id: doc.id,
+          });
         }
       }
       setPosts(postsData);
-      console.log(postsData.forEach((post) => console.log(post.id)));
+      setLoading(false);
     };
 
     fetchPosts();
   }, []);
+
+  const placeholders = Array.from({ length: 3 }).map((_, index) => (
+    <SwiperSlide key={index}>
+      <div className="hover:cursor-pointer flex flex-col gap-3 sm:gap-4 md:gap-5 mb-8 sm:mb-0">
+        <div className="relative">
+          <div className="z-10 absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-white px-2 sm:px-3 py-1 w-fit text-grayText rounded-2xl text-xs sm:text-sm">
+            <Skeleton width={80} />
+          </div>
+          <div className="group overflow-hidden rounded-2xl">
+            <Skeleton height={200} />
+          </div>
+          <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 right-2 p-2 sm:p-3 rounded-full cursor-pointer bg-yellow">
+            <HiArrowUpRight className="text-green text-base sm:text-lg md:text-xl" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 sm:gap-3 md:gap-4">
+          <div className="flex items-center gap-1 text-gray text-xs sm:text-sm">
+            <MdOutlineCalendarMonth className="text-base sm:text-lg" />
+            <Skeleton width={100} />
+          </div>
+          <span className="text-lg sm:text-xl md:text-2xl font-medium text-darkText">
+            <Skeleton width={150} />
+          </span>
+        </div>
+      </div>
+    </SwiperSlide>
+  ));
 
   return (
     <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10">
@@ -63,7 +96,7 @@ export default function Blog() {
           <div className="flex gap-4">
             <button
               className="custom-swiper-button-prev p-2 sm:p-3 border border-black h-fit rounded-md"
-              onClick={() => swiperRef.current?.swiper.slideNext()}
+              onClick={() => swiperRef.current?.swiper.slidePrev()}
             >
               <FaChevronLeft className="text-green text-sm sm:text-base" />
             </button>
@@ -93,12 +126,12 @@ export default function Blog() {
             },
           }}
         >
-          {posts.map((post) => (
+          {loading ? placeholders : posts.map((post) => (
             <SwiperSlide key={post.id}>
               <div className="hover:cursor-pointer flex flex-col gap-3 sm:gap-4 md:gap-5 mb-8 sm:mb-0">
                 <div className="relative">
                   <div className="z-10 absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-white px-2 sm:px-3 py-1 w-fit text-grayText rounded-2xl text-xs sm:text-sm">
-                    {post.category.toLocaleUpperCase()}
+                    {post.category.toUpperCase()}
                   </div>
                   <div className="group overflow-hidden rounded-2xl">
                     {post.imageUrl && (
@@ -117,7 +150,6 @@ export default function Blog() {
                       />
                     )}
                   </div>
-
                   <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 right-2 p-2 sm:p-3 rounded-full cursor-pointer bg-yellow">
                     <HiArrowUpRight className="text-green text-base sm:text-lg md:text-xl" />
                   </div>

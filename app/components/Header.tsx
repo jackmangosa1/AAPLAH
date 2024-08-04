@@ -40,14 +40,17 @@ const Header = () => {
   const navItems = [
     { href: "/#accueil", label: "Accueil" },
     { href: "/#apropos", label: "A propos" },
-    { href: "/#activites", label: "Nos Activités" },
+    { href: "/#activités", label: "Nos Activités" },
     { href: "/#blog", label: "Posts et articles" },
   ];
 
   return (
-    <header className="z-10 fixed left-0 right-0 top-0 flex flex-wrap justify-between items-center p-6 bg-white font-semibold hover:cursor-pointer w-full shadow-md">
+    <header className=" left-0 right-0 top-0 flex flex-wrap justify-between items-center p-6 bg-white font-semibold hover:cursor-pointer w-full shadow-md">
       <div className="flex justify-between items-center w-full md:w-auto">
-        <span className="text-xl">AAPLAH</span>
+        <Link href="/">
+          <span className="text-xl">AAPLAH</span>
+        </Link>
+
         {isMobile && (
           <button
             className="text-xl focus:outline-none"
@@ -65,7 +68,7 @@ const Header = () => {
       <div ref={menuRef}>
         <nav
           className={`${
-            isMobile ? (menuOpen ? "flex" : "hidden") : "flex"
+            isMobile ? (menuOpen ? "flex" : "hidden") : "flex gap-60"
           } flex-col md:flex-row items-center w-full md:w-auto mt-4 md:mt-0`}
         >
           <ul className="flex flex-col md:flex-row gap-6 md:gap-10 mb-4 md:mb-0">
@@ -78,7 +81,7 @@ const Header = () => {
             ))}
           </ul>
           <Link href="/#contacts" className="hover:text-green-500">
-            <button className="flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-3 rounded-lg">
+            <button className="flex items-center justify-center gap-2 bg-green text-white px-8 py-3 rounded-lg">
               <FiPhoneCall />
               Contactez-nous
             </button>

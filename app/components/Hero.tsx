@@ -10,8 +10,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
   const [key, setKey] = useState(0);
   const heroData = [
     {
@@ -92,7 +94,10 @@ const Hero = () => {
                   <p className="text-sm sm:text-base md:text-lg">
                     {item.description}
                   </p>
-                  <button className="bg-green text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg w-fit font-bold animate-slideUp text-sm sm:text-base">
+                  <button
+                    onClick={() => router.push("/#activités")}
+                    className="bg-green text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg w-fit font-bold animate-slideUp text-sm sm:text-base"
+                  >
                     {item.callToAction}
                   </button>
                 </div>

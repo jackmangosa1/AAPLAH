@@ -6,8 +6,8 @@ import Image2 from "../assets/harvesting.jpg";
 
 const About = React.memo(() => {
   return (
-    <div className="flex flex-col gap-10 p-6 md:p-20">
-      <section id="Apropos" className="flex flex-col gap-16">
+    <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 py-10 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section id="apropos" className="flex flex-col gap-16">
         <div className="flex flex-col md:flex-row gap-10">
           <Image
             src={Image1}
