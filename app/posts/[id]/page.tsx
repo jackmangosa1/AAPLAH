@@ -15,8 +15,6 @@ export default function PostPage() {
   const params = useParams();
   const id = params.id as string;
   const [post, setPost] = useState<Post | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -43,32 +41,17 @@ export default function PostPage() {
               id: docSnap.id,
             });
           }
-        } else {
-          setError("Post not found");
         }
       } catch (error) {
         console.error("Error fetching post:", error);
-        setError("An error occurred while fetching the post");
-      } finally {
-        setIsLoading(false);
       }
     };
 
     fetchPost();
   }, [id]);
 
-  if (isLoading) {
-    return <div className="container mx-auto px-4 py-8">Loading...</div>;
-  }
-
-  if (error) {
-    return (
-      <div className="container mx-auto px-4 py-8 text-red-500">{error}</div>
-    );
-  }
-
   if (!post) {
-    return <div className="container mx-auto px-4 py-8">Post not found</div>;
+    return null;
   }
 
   return (

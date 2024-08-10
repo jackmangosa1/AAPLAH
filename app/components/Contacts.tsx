@@ -7,9 +7,9 @@ import FormImage from "../assets/woman.jpeg";
 import { PiStarFour } from "react-icons/pi";
 import { SiMinutemailer } from "react-icons/si";
 
-const serviceID = "";
-const templateID = "";
-const userPublicID = "";
+const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const userPublicID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
 
 interface FormData {
   name: string;
@@ -82,12 +82,7 @@ const Contacts: React.FC = () => {
       setLoading(true);
 
       emailjs
-        .sendForm(
-          "service_ID",
-          "template_ID",
-          formRef.current ?? "",
-          "user_public_id"
-        )
+        .sendForm(serviceID!, templateID!, formRef.current ?? "", userPublicID!)
         .then(
           () => {
             toast.success("Votre message a été envoyé avec succès.");
