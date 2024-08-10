@@ -96,6 +96,7 @@ const Contacts: React.FC = () => {
             setLoading(false);
           },
           (error) => {
+            console.error("Error:", error);
             toast.error("Échec de l'envoi du message. Veuillez réessayer.");
             setLoading(false);
           }

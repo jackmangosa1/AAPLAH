@@ -42,7 +42,7 @@ const Footer = () => {
                 </p>
                 <div className="flex flex-col gap-2 text-darkText text-sm sm:text-base">
                   <p>Lundi - Vendredi: 9:00 - 17:00</p>
-                  <p>Samedi 10:00 - 18: 00</p>
+                  <p>Samedi 10:00 - 18:00</p>
                   <p>Dimanche - Fermé</p>
                 </div>
               </div>
@@ -59,7 +59,7 @@ const Footer = () => {
             <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 text-sm">
               <div className="flex flex-col sm:flex-row gap-4 text-darkText">
                 <span className="cursor-pointer hover:underline">
-                  Conditions d'utilisation
+                  Conditions d&apos;utilisation
                 </span>
                 <span className="cursor-pointer hover:underline">
                   Politique de confidentialité

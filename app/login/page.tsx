@@ -9,13 +9,13 @@ type formInput = {
   password: string;
 };
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [formData, setFormData] = useState<formInput>({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState(""); // Keep this line as is
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,10 +36,11 @@ const page = () => {
       }
     }
   };
+
   return (
-    <div className=" flex flex-col items-center justify-center gap-5 mt-32">
+    <div className="flex flex-col items-center justify-center gap-5 mt-32">
       <span className="text-darkText text-4xl font-bold">Login</span>
-      <form className=" flex flex-col gap-5 " onSubmit={handleLogin}>
+      <form className="flex flex-col gap-5" onSubmit={handleLogin}>
         <input
           type="email"
           name="email"
@@ -62,8 +63,10 @@ const page = () => {
           Login
         </button>
       </form>
+
+      {error && <p className="text-red-500 mt-4">{error}</p>}
     </div>
   );
 };
 
-export default page;
+export default Page;
