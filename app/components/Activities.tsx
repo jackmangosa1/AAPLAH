@@ -1,12 +1,12 @@
 import React from "react";
 import { PiStarFour } from "react-icons/pi";
 import Image from "next/image";
+import { HiArrowUpRight } from "react-icons/hi2";
 import seedImage from "../assets/seeds.jpg";
 import piscicultureImage from "../assets/pisciculture.jpg";
 import marketGardeningImage from "../assets/marketGardening.jpg";
 import avicultureImage from "../assets/aviculture.jpg";
 import trainingImage from "../assets/training.jpg";
-import { HiArrowUpRight } from "react-icons/hi2";
 
 const activitiesData = [
   {
@@ -33,9 +33,9 @@ const activitiesData = [
   {
     id: 4,
     image: avicultureImage,
-    title: "Aviculture ",
+    title: "Aviculture",
     description:
-      "Nous soutenons les familles vulnérables en développant l'aviculture, en fournissant des géniteurs de qualité et des formations sur la gestion des poulaillers. ",
+      "Nous soutenons les familles vulnérables en développant l'aviculture, en fournissant des géniteurs de qualité et des formations sur la gestion des poulaillers.",
   },
   {
     id: 5,
@@ -48,47 +48,54 @@ const activitiesData = [
 
 const Activities = () => {
   return (
-    <div className="gap-10 px-6 py-20 bg-green">
-      <section id="activités" className="flex flex-col gap-10">
-        <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-grayText rounded-2xl">
+    <section
+      id="activités"
+      className=" bg-green flex flex-col gap-16 px-6  py-10 sm:py-16 md:py-20"
+    >
+      <div className="flex flex-col gap-6 items-start">
+        <div className="flex items-center gap-2 bg-white px-4 py-2 text-grayText rounded-full text-sm">
           <PiStarFour className="text-lg rotate-12" />
           Nos activités
         </div>
-        <div className="text-6xl text-white font-bold">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold text-center">
           Les solutions durables
-        </div>
+        </h2>
+      </div>
 
-        <div className="flex gap-10 flex-wrap">
-          {activitiesData.map((activity, index) => (
-            <div
-              key={index}
-              className="relative group flex flex-col gap-5 bg-white p-5 rounded-2xl w-[25rem] hover:cursor-pointer"
-            >
-              <div className="overflow-hidden rounded-2xl">
-                <Image
-                  src={activity.image}
-                  alt="activity-image"
-                  width={500}
-                  height={500}
-                  className="rounded-2xl w-full transition-transform duration-200 ease-in-out transform group-hover:scale-110"
-                />
-              </div>
-
-              <p className="text-2xl text-darkText font-semibold">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {activitiesData.map((activity, index) => (
+          <div
+            key={activity.id}
+            className="bg-white rounded-2xl overflow-hidden shadow-lg"
+          >
+            <div className="relative h-48 sm:h-56 lg:h-64">
+              <Image
+                src={activity.image}
+                alt={activity.title}
+                layout="fill"
+                objectFit="cover"
+                quality={75}
+                priority={index === 0}
+                loading={index !== 0 ? "lazy" : undefined}
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-darkText mb-4">
                 {activity.title}
+              </h3>
+              <p className="text-sm text-grayText mb-6">
+                {activity.description}
               </p>
-              <hr className="border-grayLine" />
-              <p className="text-grayText">{activity.description}</p>
-              <div className="mt-5">
-                <div className="bg-yellow absolute bottom-2 right-2 p-4 rounded-full  ">
-                  <HiArrowUpRight className="  text-green text-xl" />
+              <div className="flex justify-end">
+                <div className="bg-yellow p-3 rounded-full">
+                  <HiArrowUpRight className="text-green text-xl" />
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
