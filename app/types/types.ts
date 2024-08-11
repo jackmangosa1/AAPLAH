@@ -9,3 +9,6 @@ export type Post = {
   imageUrl: string;
   createdAt: Timestamp;
 };
+
+
+

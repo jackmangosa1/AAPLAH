@@ -11,6 +11,7 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import { FaArrowLeft } from "react-icons/fa";
 import DOMPurify from "dompurify";
 
+
 export default function PostPage() {
   const params = useParams();
   const id = params.id as string;
