@@ -57,7 +57,7 @@ const Activities = () => {
           <PiStarFour className="text-lg rotate-12" />
           Nos activités
         </div>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold text-center">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold">
           Les solutions durables
         </h2>
       </div>
