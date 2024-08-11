@@ -40,7 +40,7 @@ const Page = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-32">
       <span className="text-darkText text-4xl font-bold">Login</span>
-      <form className="flex flex-col gap-5" onSubmit={handleLogin}>
+      <form className="flex flex-col gap-5 w-[25rem]" onSubmit={handleLogin}>
         <input
           type="email"
           name="email"
