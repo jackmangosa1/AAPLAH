@@ -1,12 +1,12 @@
 import React from "react";
 import { PiStarFour } from "react-icons/pi";
 import Image from "next/image";
-import { HiArrowUpRight } from "react-icons/hi2";
 import seedImage from "../assets/seeds.jpg";
 import piscicultureImage from "../assets/pisciculture.jpg";
 import marketGardeningImage from "../assets/marketGardening.jpg";
 import avicultureImage from "../assets/aviculture.jpg";
 import trainingImage from "../assets/training.jpg";
+import { LuLightbulb } from "react-icons/lu";
 
 const activitiesData = [
   {
@@ -88,7 +88,7 @@ const Activities = () => {
               </p>
               <div className="flex justify-end">
                 <div className="bg-yellow p-3 rounded-full">
-                  <HiArrowUpRight className="text-green text-xl" />
+                  <LuLightbulb className="text-green text-xl" />
                 </div>
               </div>
             </div>
