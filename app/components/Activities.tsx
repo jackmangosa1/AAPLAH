@@ -6,7 +6,7 @@ import piscicultureImage from "../assets/pisciculture.jpg";
 import marketGardeningImage from "../assets/marketGardening.jpg";
 import avicultureImage from "../assets/aviculture.jpg";
 import trainingImage from "../assets/training.jpg";
-import { LuLightbulb } from "react-icons/lu";
+import { MdLightbulbOutline } from "react-icons/md";
 
 const activitiesData = [
   {
@@ -50,7 +50,7 @@ const Activities = () => {
   return (
     <section
       id="activités"
-      className=" bg-green flex flex-col gap-16 px-6  py-10 sm:py-16 md:py-20"
+      className="bg-green flex flex-col gap-16 px-6 py-10 sm:py-16 md:py-20"
     >
       <div className="flex flex-col gap-6 items-start">
         <div className="flex items-center gap-2 bg-white px-4 py-2 text-grayText rounded-full text-sm">
@@ -79,16 +79,16 @@ const Activities = () => {
                 loading={index !== 0 ? "lazy" : undefined}
               />
             </div>
-            <div className="p-6">
+            <div className="p-6 relative h-64">
               <h3 className="text-xl font-semibold text-darkText mb-4">
                 {activity.title}
               </h3>
               <p className="text-sm text-grayText mb-6">
                 {activity.description}
               </p>
-              <div className="flex justify-end">
+              <div className="absolute bottom-6 right-6">
                 <div className="bg-yellow p-3 rounded-full">
-                  <LuLightbulb className="text-green text-xl" />
+                  <MdLightbulbOutline className="text-green text-xl" />
                 </div>
               </div>
             </div>
