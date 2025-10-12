@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css";
 import { FaImage } from "react-icons/fa6";
 import ProtectedRoute from "../../components/ProtectedRoute";
 import { db } from "../../lib/firebase/clientApp";
@@ -12,7 +11,7 @@ import { getStorage } from "firebase/storage";
 import { Timestamp } from "firebase/firestore";
 import toast, { Toaster } from "react-hot-toast";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false }) as any;
 
 interface FormData {
   title: string;
@@ -184,7 +183,7 @@ const Page = () => {
             <label className="text-darkText font-bold">Content</label>
             <ReactQuill
               value={formData.content}
-              onChange={(content) => handleChange(content, "content")}
+              onChange={(content: string) => handleChange(content, "content")}
             />
             {errors.content && (
               <p className="text-red-500 text-sm mt-1">{errors.content}</p>

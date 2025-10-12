@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import dynamic from "next/dynamic";
 import { useParams, useRouter } from "next/navigation";
@@ -13,7 +12,7 @@ import useAuth from "../../../lib/hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import { Post } from "../../../types/types";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false }) as any;
 
 interface FormErrors {
   title?: string;
@@ -209,7 +208,7 @@ const EditPostPage = () => {
             <label className="text-darkText font-bold">Content</label>
             <ReactQuill
               value={formData.content}
-              onChange={(content) => handleChange(content, "content")}
+              onChange={(content: string) => handleChange(content, "content")}
             />
             {errors.content && (
               <p className="text-red-500 text-sm mt-1">{errors.content}</p>
