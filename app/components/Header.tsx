@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import { HiMenu, HiX } from "react-icons/hi";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,15 +42,22 @@ const Header = () => {
   const navItems = [
     { href: "/#accueil", label: "Accueil" },
     { href: "/#apropos", label: "A propos" },
-    { href: "/#activités", label: "Nos Activités" },
+    { href: "/#projets", label: "Nos projets" },
     { href: "/#blog", label: "Posts et articles" },
   ];
 
   return (
     <header className=" left-0 right-0 top-0 flex flex-wrap justify-between items-center p-6 bg-white font-semibold hover:cursor-pointer w-full shadow-md">
       <div className="flex justify-between items-center w-full md:w-auto">
-        <Link href="/">
-          <span className="text-xl">AAPLAH</span>
+        <Link href="/" className="flex flex-row justify-center items-center">
+          <Image
+            alt="logo"
+            src={logo}
+            width={200}
+            height={50}
+            className="h-10 w-auto"
+          />
+          <span className="text-lg">AGIR</span>
         </Link>
 
         {isMobile && (

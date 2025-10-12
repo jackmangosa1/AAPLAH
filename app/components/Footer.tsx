@@ -1,5 +1,8 @@
+import Link from "next/link";
 import React from "react";
 import { FaInstagram, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
+import Image from "next/image";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -7,11 +10,22 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-8">
           <div className="lg:w-1/3 flex flex-col gap-5">
-            <p className="font-bold text-xl">AAPLAH</p>
+            <Link href="/" className="flex flex-row justify-start items-center">
+              <Image
+                alt="logo"
+                src={logo}
+                width={200}
+                height={50}
+                className="h-10 w-auto"
+              />
+              <span className="text-lg">AGIR</span>
+            </Link>
+
             <p className="text-darkText text-sm sm:text-base">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Temporibus, itaque commodi voluptatum accusantium recusandae
-              voluptatem neque quibusdam quam asperiores tenetur!
+              Organisation dédiée au développement durable et à l'amélioration
+              des conditions de vie des communautés locales à travers des
+              projets agricoles, industriels, environnementaux et éducatifs en
+              RDC.
             </p>
             <div className="flex gap-2 text-darkText">
               {[FaInstagram, FaLinkedinIn, FaFacebookF].map((Icon, index) => (
@@ -49,7 +63,7 @@ const Footer = () => {
               <div className="flex flex-col gap-4">
                 <p className="font-bold text-lg sm:text-xl">Adresses</p>
                 <div className="flex flex-col gap-2 text-darkText text-sm sm:text-base">
-                  <p>Beni, Matonge 25 AV KASAVUBU</p>
+                  <p>Butembo, Kambali 25 AV KASAVUBU</p>
                   <p>Goma, Le Volcan 23</p>
                   <p>Kinshasa, La Gombe 45</p>
                 </div>
@@ -66,7 +80,7 @@ const Footer = () => {
                 </span>
               </div>
               <div className="text-darkText">
-                Copyright © 2024 AAPLAH, Tous droits réservés.
+                Copyright © 2024 AGIR, Tous droits réservés.
               </div>
             </div>
           </div>
