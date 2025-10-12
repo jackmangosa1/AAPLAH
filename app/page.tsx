@@ -1,4 +1,3 @@
-import Container from "./components/Container";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import CustomMarquee from "./components/Marquee";
@@ -12,7 +11,7 @@ import Blog from "./components/Blog";
 export default function Home() {
   const marqueeText = ["Agro", "Industrie", "Rurale"];
   return (
-    <Container className="bg-background">
+    <>
       <Hero />
       <About />
       <CustomMarquee textes={marqueeText} />
@@ -22,6 +21,6 @@ export default function Home() {
       <CallToction />
       <Blog />
       <Contacts />
-    </Container>
+    </>
   );
 }
