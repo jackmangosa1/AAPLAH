@@ -114,7 +114,7 @@ const CallToAction = () => {
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => router.push("/#contacts")}
-            className="bg-white text-gray-900 font-bold px-7 py-4 rounded-lg shadow-md max-w-full w-[18rem] relative overflow-hidden"
+            className="bg-white text-gray-900 font-bold px-7 py-4 rounded-lg shadow-md max-w-full w-[18rem] relative overflow-hidden flex items-center justify-center"
           >
             <motion.div
               initial={{ x: "-100%" }}

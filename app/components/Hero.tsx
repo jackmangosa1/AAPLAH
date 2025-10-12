@@ -55,7 +55,7 @@ const Hero = () => {
         >
           <button
             onClick={() => router.push("/#about")}
-            className="flex items-center gap-2 bg-green hover:bg-green-600 transition-colors px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg"
+            className="flex items-center justify-center gap-2 bg-green hover:bg-green-600 transition-colors px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg"
           >
             <HiOutlineArrowNarrowRight className="w-5 h-5" />
             Découvrir AGIR
