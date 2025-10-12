@@ -22,7 +22,7 @@ const Footer = () => {
             </Link>
 
             <p className="text-darkText text-sm sm:text-base">
-              Organisation dédiée au développement durable et à l'amélioration
+              Organisation dédiée au développement durable et à l&apos;amélioration
               des conditions de vie des communautés locales à travers des
               projets agricoles, industriels, environnementaux et éducatifs en
               RDC.

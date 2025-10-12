@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { PiStarFour } from "react-icons/pi";
 import Image from "next/image";
@@ -23,11 +24,13 @@ export default function About() {
             className="w-full md:w-1/2 h-80 object-cover rounded-3xl"
             placeholder="blur"
           />
+
           <div className="flex flex-col gap-5 justify-center md:w-1/2">
             <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-gray-600 rounded-2xl">
               <PiStarFour className="text-lg rotate-12" /> À propos
             </div>
-            <motion.div
+
+            <motion.h2
               className="text-3xl md:text-6xl text-darkText font-bold"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -35,24 +38,25 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Contexte
-            </motion.div>
+            </motion.h2>
+
             <motion.p
-              className="text-gray-600"
+              className="text-gray-600 leading-relaxed"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               AGIR est une coopérative de développement communautaire créée en
-              1993 à Manguredjipa (Nord-Kivu). Dans le but d'accompagner les
-              producteurs ruraux, valoriser les ressources locales et porter des
-              projets agricoles intégrés au service des communautés.
+              1993 à Manguredjipa (Nord-Kivu). Dans le but d&apos;accompagner
+              les producteurs ruraux, de valoriser les ressources locales et de
+              porter des projets agricoles intégrés au service des communautés.
             </motion.p>
           </div>
         </motion.div>
 
         <motion.div
-          className="flex flex-col md:flex-row gap-10"
+          className="flex flex-col md:flex-row-reverse gap-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -64,11 +68,13 @@ export default function About() {
             className="w-full md:w-1/2 h-80 object-cover rounded-3xl"
             placeholder="blur"
           />
+
           <div className="flex flex-col gap-5 justify-center md:w-1/2">
             <div className="flex items-center gap-2 bg-white px-4 py-1 w-fit text-gray-600 rounded-2xl">
               <PiStarFour className="text-lg rotate-12" /> À propos
             </div>
-            <motion.div
+
+            <motion.h2
               className="text-3xl md:text-6xl text-darkText font-bold"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -76,18 +82,20 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               Mission
-            </motion.div>
+            </motion.h2>
+
             <motion.p
-              className="text-gray-600"
+              className="text-gray-600 leading-relaxed"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              AGIR a pour mission d’améliorer les conditions de vie en milieu
-              rural en promouvant une agriculture durable, la transformation
-              locale des produits, la protection des ressources naturelles et le
-              développement de l’entrepreneuriat coopératif.
+              AGIR a pour mission d&apos;améliorer les conditions de vie en
+              milieu rural en promouvant une agriculture durable, la
+              transformation locale des produits, la protection des ressources
+              naturelles et le développement de l&apos;entrepreneuriat
+              coopératif.
             </motion.p>
           </div>
         </motion.div>

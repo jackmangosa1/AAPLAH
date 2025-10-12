@@ -119,7 +119,7 @@ export default function CaspaPage() {
               </p>
               <p className="leading-relaxed text-lg mt-4">
                 Le CASPA se positionne comme une ferme-école moderne, un espace
-                d'innovation rurale et une vitrine de l'agro-pastoralisme
+                d&apos;innovation rurale et une vitrine de l&apos;agro-pastoralisme
                 durable en RDC.
               </p>
             </motion.div>
@@ -212,8 +212,8 @@ export default function CaspaPage() {
             </h3>
             <p className="leading-relaxed text-lg text-darkText">
               Contribuer à la sécurité alimentaire, à la réduction de la
-              pauvreté et à la protection de l'environnement d'ici 2030 à
-              travers un modèle reproductible d'agriculture intégrée.
+              pauvreté et à la protection de l&apos;environnement d&apos;ici 2030 à
+              travers un modèle reproductible d&apos;agriculture intégrée.
             </p>
           </motion.div>
 
@@ -239,7 +239,7 @@ export default function CaspaPage() {
                 "Transformer localement les produits pour créer de la valeur ajoutée",
                 "Former les jeunes, femmes et organisations rurales",
                 "Créer des emplois décents et stables",
-                "Accompagner 500 ménages ruraux à l'entrepreneuriat agro-pastoral",
+                "Accompagner 500 ménages ruraux à l&apos;entrepreneuriat agro-pastoral",
                 "Préserver les écosystèmes et restaurer les forêts",
               ].map((objective, idx) => (
                 <motion.div
@@ -471,7 +471,7 @@ export default function CaspaPage() {
                 </h3>
               </div>
               <p className="text-lg leading-relaxed mb-4">
-                Le CASPA valorise les produits agricoles et d'élevage via des
+                Le CASPA valorise les produits agricoles et d&apos;élevage via des
                 unités de transformation locales :
               </p>
               <motion.ul
@@ -520,7 +520,7 @@ export default function CaspaPage() {
               </div>
               <p className="text-lg leading-relaxed mb-4">
                 Le centre est un espace de transmission des compétences et
-                d'innovation :
+                d&apos;innovation :
               </p>
               <motion.ul
                 variants={staggerContainer}
@@ -530,7 +530,7 @@ export default function CaspaPage() {
                 className="space-y-3"
               >
                 {[
-                  "Écoles pratiques d'agriculture et élevage",
+                  "Écoles pratiques d&apos;agriculture et élevage",
                   "Formation aux techniques durables",
                   "Incubation de jeunes entrepreneurs ruraux",
                   "Ateliers agroforesterie",
@@ -694,10 +694,10 @@ export default function CaspaPage() {
             className="bg-green bg-opacity-5 rounded-2xl p-8 border-2 border-green border-opacity-30"
           >
             <p className="text-lg leading-relaxed text-darkText">
-              Le CASPA est conçu comme un modèle pilote à déployer dans d'autres
-              provinces, notamment à Kinshasa. Cette approche d'agriculture
+              Le CASPA est conçu comme un modèle pilote à déployer dans d&apos;autres
+              provinces, notamment à Kinshasa. Cette approche d&apos;agriculture
               intégrée et durable peut être adaptée à différents contextes pour
-              maximiser l'impact environnemental et socio-économique auprès des
+              maximiser l&apos;impact environnemental et socio-économique auprès des
               communautés rurales.
             </p>
           </motion.div>
