@@ -62,7 +62,7 @@ const Hero = () => {
           </button>
 
           <button
-            onClick={() => router.push("/#caspa")}
+            onClick={() => router.push("/projects/caspa")}
             className="bg-white/90 hover:bg-white text-green font-semibold transition-colors px-6 py-3 rounded-lg shadow-md hover:shadow-lg"
           >
             🌿 Notre projet phare : CASPA
